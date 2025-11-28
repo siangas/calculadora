@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Calculadora (solo HTML y CSS)</title>
+
+  <style>
+    :root{
+      --bg:#0f1724;
+      --panel:#111827;
+      --accent:#06b6d4;
+      --muted:#94a3b8;
+      --glass: rgba(255,255,255,0.03);
+      --btn-bg: rgba(255,255,255,0.03);
+      --btn-hover: rgba(255,255,255,0.06);
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-family:Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(6,182,212,0.06), transparent),
+                  radial-gradient(800px 400px at 90% 90%, rgba(99,102,241,0.04), transparent),
+                  var(--bg);
+      color: #e6eef6;
+      padding:20px;
+    }
+
+    .calculator{
+      width: 360px;
+      max-width: calc(100% - 40px);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(2,6,23,0.7), inset 0 1px 0 rgba(255,255,255,0.02);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.03);
+    }
+
+    .screen{
+      padding:18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+      text-align:right;
+    }
+
+    .history{
+      font-size:14px;
+      color:var(--muted);
+      min-height:18px;
+      opacity:0.9;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .display{
+      font-size:36px;
+      line-height:1;
+      margin-top:6px;
+      word-break:break-all;
+      font-weight:600;
+    }
+
+    .keys{
+      padding:16px;
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap:12px;
+      background: var(--panel);
+    }
+
+    button.key{
+      background:var(--btn-bg);
+      border: none;
+      padding:16px;
+      font-size:18px;
+      border-radius:10px;
+      cursor:pointer;
+      transition:transform .06s ease, background .12s ease;
+      box-shadow: 0 3px 10px rgba(2,6,23,0.5);
+    }
+
+    button.key:active{transform:translateY(1px) scale(.998)}
+    button.key:hover{background:var(--btn-hover)}
+
+    button.op{
+      background: linear-gradient(180deg, rgba(6,182,212,0.12), rgba(6,182,212,0.06));
+      color:var(--accent);
+      font-weight:700;
+    }
+
+    button.equal{
+      grid-column: span 2;
+      background: linear-gradient(180deg, rgba(99,102,241,0.18), rgba(99,102,241,0.08));
+      color: white;
+      font-weight:700;
+    }
+
+    button.wide{grid-column: span 2}
+
+    @media (max-width:420px){
+      .calculator{width:320px}
+      .display{font-size:30px}
+      button.key{padding:14px;font-size:16px}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="calculator" role="presentation">
+    <div class="screen">
+      <div class="history">—</div>
+      <div class="display">0</div>
+    </div>
+
+    <div class="keys">
+      <button class="key op">C</button>
+      <button class="key op">⌫</button>
+      <button class="key op">%</button>
+      <button class="key op">÷</button>
+
+      <button class="key">7</button>
+      <button class="key">8</button>
+      <button class="key">9</button>
+      <button class="key op">×</button>
+
+      <button class="key">4</button>
+      <button class="key">5</button>
+      <button class="key">6</button>
+      <button class="key op">−</button>
+
+      <button class="key">1</button>
+      <button class="key">2</button>
+      <button class="key">3</button>
+      <button class="key op">+</button>
+
+      <button class="key wide">0</button>
+      <button class="key">.</button>
+      <button class="key equal">=</button>
+    </div>
+  </div>
+</body>
+</html>
